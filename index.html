@@ -3,68 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --main-color: #000;
+        @keyframes display-text {
+            0%, 25% { display: inline-block; }
+            26%, 100% { display: none; }
         }
 
-        .home-detail h2 {
-            display: inline-block;
-            font-size: 3.2rem;
-            margin-top: -1rem;
+        @keyframes fill-text {
+            0%, 10% { width: 0; }
+            50%, 90% { width: 100%; }
+            100% { width: 0; }
         }
 
-        .home-detail h2 span {
+        .animated-role span {
             position: relative;
             display: inline-block;
             color: transparent;
-            -webkit-text-stroke: .07rem var(--main-color);
+            -webkit-text-stroke: 1px #34D399; /* emerald-400 */
             animation: display-text 16s linear infinite;
             animation-delay: calc(-4s * var(--i));
+            z-index: 999;
         }
 
-        @keyframes display-text {
-            0%, 25% {
-                display: inline-block;
-            }
-            26%, 100% {
-                display: none;
-            }
-        }
-
-        .home-detail h2 span::before {
+        .animated-role span::before {
             content: attr(data-text);
             position: absolute;
             width: 0;
-            border-right: .2rem solid var(--main-color);
-            color: var(--main-color);
+            border-right: 2px solid #34D399; /* emerald-400 */
+            color: #34D399; /* emerald-400 */
             white-space: nowrap;
             overflow: hidden;
             animation: fill-text 4s linear infinite;
         }
-
-        @keyframes fill-text {
-            0%, 10% {
-                width: 0;
-            }
-            70%, 90% {
-                width: 100%;
-            }
-            100% {
-                width: 0;
-            }
-        }
     </style>
 </head>
-<body>
-    <div class="home-detail">
-        <h2>I'm a
-            <span style="--i:4;" data-text="Frontend Developer">Frontend Developer</span>
-            <span style="--i:3;" data-text="Graphic Designer">Graphic Designer</span>
-            <span style="--i:2;" data-text="UI/UX Designer">UI/UX Designer</span>
-            <span style="--i:1;" data-text="Generative Music Artist">Generative Music Artist</span>
-        </h2>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
+    <div class="max-w-4xl w-full space-y-8">
+        <div class="home-detail text-center backdrop-blur-sm bg-white/5 rounded-lg p-8 shadow-2xl border border-white/10">
+            <h2 class="text-4xl md:text-6xl font-bold text-slate-300 mb-6 tracking-tight">
+                I'm a<br>
+                <div class="animated-role inline-block mt-4">
+                    <span style="--i:4;" data-text="Frontend Developer" class="mx-2"></span>
+                    <span style="--i:3;" data-text="Creative Developer" class="mx-2"></span>
+                    <span style="--i:2;" data-text="UX Architect" class="mx-2"></span>
+                    <span style="--i:1;" data-text="Digital Craftsman" class="mx-2"></span>
+                </div>
+            </h2>
+            
+            <div class="mt-12 flex justify-center space-x-4">
+                <a href="#" class="px-6 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 rounded-lg transition-all duration-300 border border-emerald-400/30 hover:border-emerald-400/50">
+                    View Portfolio
+                </a>
+                <a href="#" class="px-6 py-3 bg-white/5 hover:bg-white/10 text-slate-300 rounded-lg transition-all duration-300 border border-white/10 hover:border-white/20">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+
+        <div class="text-center text-slate-500 text-sm mt-8">
+            <p>Crafting digital experiences with precision and passion</p>
+            <div class="mt-2 flex justify-center space-x-4">
+                <a href="#" class="hover:text-emerald-400 transition-colors">GitHub</a>
+                <a href="#" class="hover:text-emerald-400 transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-emerald-400 transition-colors">Dribbble</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
